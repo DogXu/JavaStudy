@@ -10,7 +10,14 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>SGG_Java_2020</module>
+        <module>Mybatis</module>
+        <module>Mybatis_HeiMa_2018_Day01_02_Annotation</module>
+        <module>Mybatis_HeiMa_2018_Day01_03_DaoImpl</module>
+        <module>Mybatis_HeiMa_2018_Day01_04_SelfDesign</module>
     </modules>
 
-
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
 </project>

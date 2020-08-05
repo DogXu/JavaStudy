@@ -6,8 +6,26 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="Mybatis" />
+        <module name="Mybatis_HeiMa_2018_Day01_01" />
+        <module name="Mybatis_HeiMa_2018_Day01_02_Annotation" />
+        <module name="Mybatis_HeiMa_2018_Day01_03_DaoImpl" />
+        <module name="Mybatis_HeiMa_2018_Day01_04_SelfDesign" />
         <module name="SGG_Java_2020" />
       </profile>
+      <profile name="Annotation profile for JavaStudy" enabled="true">
+        <sourceOutputDir name="../SGG_Java_2020/target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../SGG_Java_2020/target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="JavaCore_SGG_2019" />
+      </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel target="1.8">
+      <module name="JavaCore_SGG_2019" target="1.8" />
+      <module name="JavaStudy" target="1.8" />
+      <module name="Mybatis_HeiMa_2018_Day01_02_Annotation" target="1.8" />
+      <module name="Mybatis_HeiMa_2018_Day01_03_DaoImpl" target="1.8" />
+      <module name="Mybatis_HeiMa_2018_Day01_04_SelfDesign" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

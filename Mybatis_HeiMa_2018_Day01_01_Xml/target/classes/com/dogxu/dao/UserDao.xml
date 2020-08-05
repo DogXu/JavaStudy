@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dogxu.dao.UserDao">
+
+    <!--配置查询结果列名和实体类的属性名的对相应关系-->
+    <resultMap id="userMap" type="com.dogxu.entity.UserEntity2">
+        <!--主键字段的对应-->
+        <id property="userId" column="id"/>
+        <!--非主键字段的对应-->
+        <result property="userName" column="username"/>
+        <result property="userSex" column="sex"/>
+        <result property="userAddress" column="address"/>
+        <result property="userBirthday" column="birthday"/>
+    </resultMap>
+
+    <!--封装重复的SQL语句以便引用-->
+    <sql id="selectAll">
+        SELECT * FROM user
+    </sql>
+    
+    <!--查询所有-->
+    <select id="selectAll" resultType="com.dogxu.entity.UserEntity">
+        <include refid="selectAll"></include>
+--         SELECT * FROM user
+    </select>
+
+    <!--查询所有-->
+    <select id="selectAllToUserMap" resultMap="userMap">
+        SELECT * FROM user
+    </select>
+
+    <!--通过用户名模糊查询用户-->
+    <select id="selectByUsernameWithPercent" parameterType="string" resultType="com.dogxu.entity.UserEntity">
+        SELECT * FROM user WHERE username LIKE  #{username}
+    </select>
+
+    <!--通过用户名模糊查询用户-->
+    <select id="selectByUsernameWithoutPercent" parameterType="string" resultType="com.dogxu.entity.UserEntity">
+        SELECT * FROM user WHERE username LIKE  '%${value}%'
+    </select>
+
+    <!--通过组合参数对象查询用户-->
+    <select id="selectByVo" parameterType="com.dogxu.entity.UserQueryVo" resultType="UserEntity">
+        SELECT * FROM user WHERE id = #{id} AND username LIKE #{user.username}
+    </select>
+
+    <!--通过组合参数对象中的ID集合查询用户-->
+    <select id="selectByForeach" parameterType="com.dogxu.entity.UserQueryVo" resultType="UserEntity">
+        <include refid="selectAll"></include>
+        <where>
+            <if test="ids != null and ids.size() > 0">
+                <foreach collection="ids" open="and id in (" close=")" item="uid" separator=",">
+                    #{uid}
+                </foreach>
+            </if>
+        </where>
+    </select>
+
+    <!--通过条件参数查询用户-->
+    <select id="selectByConditionWithIf" parameterType="UserEntity" resultType="UserEntity">
+        SELECT * FROM user WHERE 1 = 1
+
+        <if test="id > 0">
+            AND id = #{id}
+        </if>
+
+        <if test="username != null and username != ''">
+            AND username LIKE #{username}
+        </if>
+
+        <if test="address != null">
+            AND address LIKE #{address}
+        </if>
+    </select>
+
+    <!--通过条件参数查询用户-->
+    <select id="selectByConditionWithWhere" parameterType="UserEntity" resultType="UserEntity">
+        SELECT * FROM user
+        <where>
+            <if test="id > 0">
+                AND id = #{id}
+            </if>
+
+            <if test="username != null and username != ''">
+                AND username LIKE #{username}
+            </if>
+
+            <if test="address != null">
+                AND address LIKE #{address}
+            </if>
+        </where>
+    </select>
+    
+    <!--保存用户-->
+    <insert id="saveUserWithoutReturnId" parameterType="com.dogxu.entity.UserEntity">
+        INSERT INTO user (username,address,sex,birthday) VALUES (#{username},#{address},#{sex},#{birthday})
+    </insert>
+
+    <!--保存用户返回插入ID-->
+    <insert id="saveUserWithReturnId" parameterType="com.dogxu.entity.UserEntity">
+        <selectKey keyProperty="id" keyColumn="id" resultType="java.lang.Integer" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO user (username,address,sex,birthday) VALUES (#{username},#{address},#{sex},#{birthday})
+    </insert>
+
+    <!--更新用户-->
+    <update id="updateUser" parameterType="com.dogxu.entity.UserEntity">
+        UPDATE user SET username = #{username},address = #{address},sex = #{sex},birthday = #{birthday} WHERE id = #{id}
+    </update>
+
+    <!--删除用户-->
+    <delete id="deleteUser" parameterType="com.dogxu.entity.UserEntity">
+        DELETE FROM user WHERE id = #{id}
+    </delete>
+</mapper>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/JavaCore_SGG_2019/JavaCore_SGG_2019.iml" filepath="$PROJECT_DIR$/JavaCore_SGG_2019/JavaCore_SGG_2019.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/JavaStudy.iml" filepath="$PROJECT_DIR$/.idea/JavaStudy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Mybatis_HeiMa_2018_Day01_01_Xml/Mybatis_HeiMa_2018_Day01_01.iml" filepath="$PROJECT_DIR$/Mybatis_HeiMa_2018_Day01_01_Xml/Mybatis_HeiMa_2018_Day01_01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Mybatis_HeiMa_2018_Day01_02_Annotation/Mybatis_HeiMa_2018_Day01_02_Annotation.iml" filepath="$PROJECT_DIR$/Mybatis_HeiMa_2018_Day01_02_Annotation/Mybatis_HeiMa_2018_Day01_02_Annotation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Mybatis_HeiMa_2018_Day01_03_DaoImpl/Mybatis_HeiMa_2018_Day01_03_DaoImpl.iml" filepath="$PROJECT_DIR$/Mybatis_HeiMa_2018_Day01_03_DaoImpl/Mybatis_HeiMa_2018_Day01_03_DaoImpl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Mybatis_HeiMa_2018_Day01_04_SelfDesign/Mybatis_HeiMa_2018_Day01_04_SelfDesign.iml" filepath="$PROJECT_DIR$/Mybatis_HeiMa_2018_Day01_04_SelfDesign/Mybatis_HeiMa_2018_Day01_04_SelfDesign.iml" />
+    </modules>
+  </component>
+</project>
