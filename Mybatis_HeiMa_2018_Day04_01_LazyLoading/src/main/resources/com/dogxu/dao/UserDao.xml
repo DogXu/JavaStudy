@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dogxu.dao.UserDao">
+
+    <select id="selectById" parameterType="Integer" resultType="com.dogxu.entity.UserEntity">
+        SELECT * FROM user WHERE id = #{uid}
+    </select>
+
+    <!--配置映射关系-->
+    <resultMap id="userAccountsMap" type="com.dogxu.entity.UserEntity">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="sex" column="sex"/>
+        <result property="address" column="address"/>
+        <result property="birthday" column="birthday"/>
+
+        <!--collection用于建立一对多中集合属性的对应关系，ofType用于指定集合元素的数据类型-->
+        <collection property="accounts" ofType="com.dogxu.entity.AccountEntity"
+                    select="com.dogxu.dao.AccountDao.selectById"
+                    column="id"/>
+    </resultMap>
+
+    <select id="selectAllUserWithAccounts" resultMap="userAccountsMap">
+        SELECT * FROM user
+    </select>
+
+</mapper>

@@ -11,6 +11,10 @@
         <module name="Mybatis_HeiMa_2018_Day01_02_Annotation" />
         <module name="Mybatis_HeiMa_2018_Day01_03_DaoImpl" />
         <module name="Mybatis_HeiMa_2018_Day01_04_SelfDesign" />
+        <module name="Mybatis_HeiMa_2018_Day03_02_MultipleTables" />
+        <module name="Mybatis_HeiMa_2018_Day03_03_JNDI" />
+        <module name="Mybatis_HeiMa_2018_Day04_01_LazyLoading" />
+        <module name="Mybatis_HeiMa_2018_Day04_02_Cache" />
         <module name="SGG_Java_2020" />
       </profile>
       <profile name="Annotation profile for JavaStudy" enabled="true">
@@ -26,6 +30,10 @@
       <module name="Mybatis_HeiMa_2018_Day01_02_Annotation" target="1.8" />
       <module name="Mybatis_HeiMa_2018_Day01_03_DaoImpl" target="1.8" />
       <module name="Mybatis_HeiMa_2018_Day01_04_SelfDesign" target="1.8" />
+      <module name="Mybatis_HeiMa_2018_Day03_02_MultipleTables" target="1.8" />
+      <module name="Mybatis_HeiMa_2018_Day03_03_JNDI" target="1.8" />
+      <module name="Mybatis_HeiMa_2018_Day04_01_LazyLoading" target="1.8" />
+      <module name="Mybatis_HeiMa_2018_Day04_02_Cache" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

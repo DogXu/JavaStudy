@@ -2,6 +2,7 @@ package dogxu.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author DogXu
@@ -15,6 +16,8 @@ public class UserEntity implements Serializable{
     private Date birthday;
     private String sex;
     private String address;
+
+    private List<AccountEntity> accounts;
 
     public Integer getId() {
         return id;
@@ -56,6 +59,14 @@ public class UserEntity implements Serializable{
         this.address = address;
     }
 
+    public List<AccountEntity> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(List<AccountEntity> accounts) {
+        this.accounts = accounts;
+    }
+
     @Override
     public String toString() {
         return "UserEntity{" +
@@ -64,6 +75,7 @@ public class UserEntity implements Serializable{
                 ", birthday=" + birthday +
                 ", sex='" + sex + '\'' +
                 ", address='" + address + '\'' +
+                ", accounts=" + accounts +
                 '}';
     }
 }

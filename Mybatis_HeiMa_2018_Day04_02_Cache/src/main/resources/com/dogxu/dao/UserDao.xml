@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dogxu.dao.UserDao">
+    <!--开启二级缓存支持-->
+    <cache></cache>
+
+    <!--查询所有-->
+    <select id="selectAll" resultType="com.dogxu.entity.UserEntity">
+        SELECT * FROM user
+    </select>
+
+    <!--通过id查询用户(一级缓存)-->
+    <select id="selectByIdWithFirstLevelCache" parameterType="Integer" resultType="com.dogxu.entity.UserEntity" useCache="true">
+        SELECT * FROM user WHERE id = #{id}
+    </select>
+
+    <!--通过id查询用户(二级缓存)-->
+    <select id="selectByIdWithSecondLevelCache" parameterType="Integer" resultType="com.dogxu.entity.UserEntity" useCache="true">
+        SELECT * FROM user WHERE id = #{id}
+    </select>
+
+</mapper>

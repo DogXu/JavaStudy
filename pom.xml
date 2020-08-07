@@ -14,7 +14,23 @@
         <module>Mybatis_HeiMa_2018_Day01_02_Annotation</module>
         <module>Mybatis_HeiMa_2018_Day01_03_DaoImpl</module>
         <module>Mybatis_HeiMa_2018_Day01_04_SelfDesign</module>
+        <module>Mybatis_HeiMa_2018_Day03_02_MultipleTables</module>
+        <module>Mybatis_HeiMa_2018_Day03_03_JNDI</module>
+        <module>Mybatis_HeiMa_2018_Day04_01_LazyLoading</module>
+        <module>Mybatis_HeiMa_2018_Day04_02_Cache</module>
     </modules>
+    <dependencies>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.4.6</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+        </dependency>
+    </dependencies>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>

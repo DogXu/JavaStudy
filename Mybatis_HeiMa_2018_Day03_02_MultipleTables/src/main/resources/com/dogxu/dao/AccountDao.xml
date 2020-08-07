@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE mapper
+                PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dogxu.dao.AccountDao">
+
+    <!--建立对应关系-->
+    <resultMap id="account" type="AccountEntity">
+        <id property="id" column="aid"/>
+        <result property="uid" column="uid"/>
+        <result property="money" column="money"/>
+
+        <!--指定从表的引用实体类属性-->
+        <association property="user" javaType="UserEntity">
+            <id property="id" column="id"/>
+            <result property="username" column="username"/>
+            <result property="sex" column="sex"/>
+            <result property="address" column="address"/>
+            <result property="birthday" column="birthday"/>
+        </association>
+    </resultMap>
+
+    <select id="selectAllAccountUser" resultType="com.dogxu.entity.AccountUserEntity">
+        SELECT account.*,user.username,user.address FROM account,user WHERE account.uid = user.id
+    </select>
+    <select id="selectAllAccountWithUser" resultMap="account">
+        SELECT u.*,a.id AS aid,a.uid,a.money FROM account a,user u WHERE a.uid = u.id;
+    </select>
+</mapper>

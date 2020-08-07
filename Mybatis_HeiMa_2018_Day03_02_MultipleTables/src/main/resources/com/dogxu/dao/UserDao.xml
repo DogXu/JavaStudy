@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dogxu.dao.UserDao">
+
+    <!--配置映射关系-->
+    <resultMap id="userAccountsMap" type="UserEntity">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="sex" column="sex"/>
+        <result property="address" column="address"/>
+        <result property="birthday" column="birthday"/>
+
+        <!--collection用于建立一对多中集合属性的对应关系，ofType用于指定集合元素的数据类型-->
+        <collection property="accounts" ofType="AccountEntity">
+            <id property="id" column="aid"/>
+            <result property="uid" column="uid"/>
+            <result property="money" column="money"/>
+        </collection>
+    </resultMap>
+
+    <select id="selectAllUserWithAccounts" resultMap="userAccountsMap">
+        SELECT u.*,a.id AS aid,a.uid,a.money FROM user u
+        LEFT OUTER JOIN account a ON u.id = a.uid
+    </select>
+
+    <!--配置映射关系-->
+    <resultMap id="userRolesMap" type="UserEntity">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="sex" column="sex"/>
+        <result property="address" column="address"/>
+        <result property="birthday" column="birthday"/>
+
+        <!--collection用于建立一对多中集合属性的对应关系，ofType用于指定集合元素的数据类型-->
+        <collection property="roles" ofType="RoleEntity">
+            <id property="roleId" column="rid"/>
+            <result property="roleName" column="role_name"/>
+            <result property="roleDesc" column="role_desc"/>
+        </collection>
+    </resultMap>
+
+    <select id="selectAllUserWithRoles" resultMap="userRolesMap">
+        SELECT u.*,r.id AS rid,r.role_name,r.role_desc
+        FROM user u
+        JOIN user_role ur ON ur.uid = u.id
+        JOIN role r ON r.id = ur.rid
+    </select>
+
+</mapper>
